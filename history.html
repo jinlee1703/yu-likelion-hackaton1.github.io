@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>기록 히스토리 & BMI 계산기</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>기록 히스토리 & BMI 계산기</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="record.html">건강 정보 기록</a></li>
+        </ul>
+      </nav>
+      <div id="bmiCalculator">
+        <h2>BMI 계산기</h2>
+        <p id="bmiResult"></p>
+      </div>
+      <div id="healthHistory">
+        <h2>건강 기록 히스토리</h2>
+        <table id="historyTable">
+          <thead>
+            <tr>
+              <th>날짜</th>
+              <th>체중 (kg)</th>
+              <th>키 (cm)</th>
+              <th>혈압 (mmHg)</th>
+              <th>심박수 (bpm)</th>
+              <th>수면 시간 (시간)</th>
+              <th>기분</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      window.onload = function () {
+        updateHistoryTable();
+        calculateBMI();
+      };
+    </script>
+  </body>
+</html>

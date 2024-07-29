@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>건강 관리 홈</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>내 건강 관리 홈</h1>
+      <nav>
+        <ul>
+          <li><a href="record.html">건강 정보 기록</a></li>
+          <li><a href="history.html">기록 히스토리 & BMI 계산기</a></li>
+        </ul>
+      </nav>
+      <div id="lastRecord">
+        <h2>최근 저장 정보</h2>
+        <p id="lastRecordInfo"></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      window.onload = function () {
+        loadLastRecord();
+      };
+    </script>
+  </body>
+</html>

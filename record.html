@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>건강 정보 기록</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>건강 정보 기록</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="history.html">기록 히스토리 & BMI 계산기</a></li>
+        </ul>
+      </nav>
+      <form id="healthForm">
+        <label for="weight">체중 (kg)</label>
+        <input type="number" id="weight" required />
+
+        <label for="height">키 (cm)</label>
+        <input type="number" id="height" required />
+
+        <label for="bloodPressure">혈압 (mmHg)</label>
+        <input type="text" id="bloodPressure" placeholder="예: 120/80" />
+
+        <label for="heartRate">심박수 (bpm)</label>
+        <input type="number" id="heartRate" />
+
+        <label for="sleepHours">수면 시간 (시간)</label>
+        <input type="number" id="sleepHours" step="0.1" />
+
+        <label for="mood">기분</label>
+        <select id="mood">
+          <option value="매우 좋음">매우 좋음</option>
+          <option value="좋음">좋음</option>
+          <option value="보통">보통</option>
+          <option value="나쁨">나쁨</option>
+          <option value="매우 나쁨">매우 나쁨</option>
+        </select>
+
+        <button type="submit">저장하기</button>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
