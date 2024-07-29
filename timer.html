@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>운동 통계</title>
+    <title>운동 타이머</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header>
-      <h1>운동 통계</h1>
+      <h1>운동 타이머</h1>
       <nav>
         <ul>
           <li><a href="index.html">홈</a></li>
@@ -23,13 +22,21 @@
       </nav>
     </header>
     <main>
-      <section id="weekly-stats">
-        <h2>주간 통계</h2>
-        <canvas id="weekly-chart"></canvas>
-      </section>
-      <section id="monthly-stats">
-        <h2>월간 통계</h2>
-        <canvas id="monthly-chart"></canvas>
+      <section id="timer-section">
+        <div id="timer-display">00:00</div>
+        <div id="timer-controls">
+          <button id="start-timer">시작</button>
+          <button id="pause-timer">일시정지</button>
+          <button id="reset-timer">리셋</button>
+        </div>
+        <div id="timer-setup">
+          <label for="workout-time">운동 시간 (초):</label>
+          <input type="number" id="workout-time" value="30" />
+          <label for="rest-time">휴식 시간 (초):</label>
+          <input type="number" id="rest-time" value="10" />
+          <label for="rounds">라운드 수:</label>
+          <input type="number" id="rounds" value="3" />
+        </div>
       </section>
     </main>
     <script src="script.js"></script>

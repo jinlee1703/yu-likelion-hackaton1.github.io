@@ -153,3 +153,111 @@ window.onload = function () {
     drawWeeklyChart();
   }
 };
+
+// 타이머 관련 변수
+let timerInterval;
+let currentTime = 0;
+let isWorkout = true;
+let currentRound = 1;
+
+// 타이머 기능
+function startTimer() {
+  const workoutTime = parseInt(document.getElementById("workout-time").value);
+  const restTime = parseInt(document.getElementById("rest-time").value);
+  const rounds = parseInt(document.getElementById("rounds").value);
+
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    if (currentTime > 0) {
+      currentTime--;
+      updateTimerDisplay();
+    } else {
+      if (isWorkout) {
+        if (currentRound < rounds) {
+          currentTime = restTime;
+          isWorkout = false;
+          document.getElementById("timer-display").style.backgroundColor =
+            "lightblue";
+        } else {
+          clearInterval(timerInterval);
+          alert("운동 완료!");
+          return;
+        }
+      } else {
+        currentTime = workoutTime;
+        isWorkout = true;
+        currentRound++;
+        document.getElementById("timer-display").style.backgroundColor =
+          "lightgreen";
+      }
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  clearInterval(timerInterval);
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  currentTime = 0;
+  isWorkout = true;
+  currentRound = 1;
+  updateTimerDisplay();
+  document.getElementById("timer-display").style.backgroundColor = "";
+}
+
+function updateTimerDisplay() {
+  const minutes = Math.floor(currentTime / 60);
+  const seconds = currentTime % 60;
+  document.getElementById("timer-display").textContent = `${minutes
+    .toString()
+    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+// 운동 추천 기능
+const exercises = [
+  "스쿼트 3세트 x 15회",
+  "푸시업 3세트 x 10회",
+  "플랭크 3세트 x 30초",
+  "런지 3세트 x 12회 (양쪽)",
+  "버피 3세트 x 10회",
+  "산 클라이머 3세트 x 20초",
+  "덤벨 로우 3세트 x 12회",
+  "점프 스쿼트 3세트 x 10회",
+];
+
+function getRecommendation() {
+  const recommendationDisplay = document.getElementById(
+    "recommendation-display"
+  );
+  const randomExercises = exercises.sort(() => 0.5 - Math.random()).slice(0, 3);
+  recommendationDisplay.innerHTML =
+    "<ul>" +
+    randomExercises.map((exercise) => `<li>${exercise}</li>`).join("") +
+    "</ul>";
+}
+
+// 페이지 로드 시 실행
+window.onload = function () {
+  // 기존 코드 유지
+
+  if (document.getElementById("start-timer")) {
+    document
+      .getElementById("start-timer")
+      .addEventListener("click", startTimer);
+    document
+      .getElementById("pause-timer")
+      .addEventListener("click", pauseTimer);
+    document
+      .getElementById("reset-timer")
+      .addEventListener("click", resetTimer);
+  }
+
+  if (document.getElementById("get-recommendation")) {
+    document
+      .getElementById("get-recommendation")
+      .addEventListener("click", getRecommendation);
+    getRecommendation(); // 초기 추천 표시
+  }
+};
