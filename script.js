@@ -85,3 +85,71 @@ if (document.getElementById("healthForm")) {
       window.location.href = "index.html"; // 저장 후 메인 페이지로 이동
     });
 }
+
+function setGoal(event) {
+  event.preventDefault();
+  const goalType = document.getElementById("goal-type").value;
+  const goalValue = document.getElementById("goal-value").value;
+  const goalDate = document.getElementById("goal-date").value;
+
+  const goal = { type: goalType, value: goalValue, date: goalDate };
+  let goals = JSON.parse(localStorage.getItem("goals")) || [];
+  goals.push(goal);
+  localStorage.setItem("goals", JSON.stringify(goals));
+
+  displayGoals();
+}
+
+function displayGoals() {
+  const goalsList = document.getElementById("goals-list");
+  const goals = JSON.parse(localStorage.getItem("goals")) || [];
+
+  goalsList.innerHTML = "";
+  goals.forEach((goal, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${goal.type}: ${goal.value}, 달성일: ${goal.date}`;
+    goalsList.appendChild(li);
+  });
+}
+
+// 통계 차트 그리기 기능
+function drawWeeklyChart() {
+  const ctx = document.getElementById("weekly-chart").getContext("2d");
+  const records = JSON.parse(localStorage.getItem("exerciseRecords")) || [];
+
+  // 데이터 처리 로직 (실제 구현 시 더 복잡할 수 있음)
+  const data = [0, 0, 0, 0, 0, 0, 0]; // 일주일치 데이터
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["월", "화", "수", "목", "금", "토", "일"],
+      datasets: [
+        {
+          label: "주간 운동량",
+          data: data,
+          backgroundColor: "rgba(75, 192, 192, 0.6)",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
+
+// 페이지 로드 시 실행
+window.onload = function () {
+  if (document.getElementById("goal-form")) {
+    document.getElementById("goal-form").addEventListener("submit", setGoal);
+    displayGoals();
+  }
+
+  if (document.getElementById("weekly-chart")) {
+    drawWeeklyChart();
+  }
+};

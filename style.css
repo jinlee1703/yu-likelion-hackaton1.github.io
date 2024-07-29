@@ -77,3 +77,38 @@ td {
 th {
   background-color: #f2f2f2;
 }
+
+#goal-setting,
+#current-goals {
+  margin-bottom: 20px;
+}
+
+#goal-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+#goal-form label,
+#goal-form input,
+#goal-form select,
+#goal-form button {
+  margin-bottom: 10px;
+}
+
+#goals-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#goals-list li {
+  background-color: #f0f0f0;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+}

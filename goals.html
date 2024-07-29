@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>운동 목표 설정</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>운동 목표 설정</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="record.html">기록</a></li>
+          <li><a href="history.html">히스토리</a></li>
+          <li><a href="goals.html">목표</a></li>
+          <li><a href="stats.html">통계</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="goal-setting">
+        <h2>새 목표 설정</h2>
+        <form id="goal-form">
+          <label for="goal-type">목표 유형:</label>
+          <select id="goal-type" required>
+            <option value="distance">거리</option>
+            <option value="time">시간</option>
+            <option value="frequency">빈도</option>
+          </select>
+          <label for="goal-value">목표 값:</label>
+          <input type="number" id="goal-value" required />
+          <label for="goal-date">목표 달성일:</label>
+          <input type="date" id="goal-date" required />
+          <button type="submit">목표 설정</button>
+        </form>
+      </section>
+      <section id="current-goals">
+        <h2>현재 목표</h2>
+        <ul id="goals-list"></ul>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

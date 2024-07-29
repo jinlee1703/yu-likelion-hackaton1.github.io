@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>건강 관리 홈</title>
+    <title>운동 통계</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1>내 건강 관리 홈</h1>
+    <header>
+      <h1>운동 통계</h1>
       <nav>
         <ul>
           <li><a href="index.html">홈</a></li>
@@ -18,16 +19,17 @@
           <li><a href="stats.html">통계</a></li>
         </ul>
       </nav>
-      <div id="lastRecord">
-        <h2>최근 저장 정보</h2>
-        <p id="lastRecordInfo"></p>
-      </div>
-    </div>
+    </header>
+    <main>
+      <section id="weekly-stats">
+        <h2>주간 통계</h2>
+        <canvas id="weekly-chart"></canvas>
+      </section>
+      <section id="monthly-stats">
+        <h2>월간 통계</h2>
+        <canvas id="monthly-chart"></canvas>
+      </section>
+    </main>
     <script src="script.js"></script>
-    <script>
-      window.onload = function () {
-        loadLastRecord();
-      };
-    </script>
   </body>
 </html>
